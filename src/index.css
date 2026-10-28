@@ -1,0 +1,313 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================
+   SkillLinkr OMS — Consolidated Stylesheet
+   Includes: base layout, glassmorphism tokens,
+   background, typography, nav, animations,
+   and all component micro-interactions.
+   ============================================= */
+
+/* ── Reset ─────────────────────────────────── */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Page Base ─────────────────────────────── */
+body {
+  background-color: transparent !important;
+}
+
+/* ── Material Symbols Icon Helper ───────────── */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* =============================================
+   Typography — Philosopher Font
+   All Headings & Subheadings
+   ============================================= */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Philosopher', serif !important;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  letter-spacing: -0.025em;
+}
+
+h3, h4 {
+  letter-spacing: -0.015em;
+}
+
+section > div span.text-label-sm,
+.text-label-sm[class*="uppercase"],
+[class*="tracking-wider"] {
+  font-family: 'Philosopher', serif !important;
+}
+
+/* =============================================
+   Typography — Playfair Display Font
+   Buttons
+   ============================================= */
+button,
+.btn,
+[role="button"],
+a.button-class {
+  font-family: 'Playfair Display', serif !important;
+}
+
+/* =============================================
+   Navigation — Standard Nav Link Underline
+   ============================================= */
+.nav-link {
+  position: relative;
+  padding-bottom: 3px;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #0052c9;
+  border-radius: 2px;
+  transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+.nav-link:hover {
+  color: #0052c9;
+}
+
+/* =============================================
+   Navigation — Pill Nav (Sliding Indicator)
+   ============================================= */
+.pill-nav {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.06),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.9),
+    0 4px 20px rgba(0, 82, 201, 0.07);
+  border-radius: 999px;
+  padding: 5px 6px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  position: relative;
+}
+
+.pill-slider {
+  position: absolute;
+  background: #1a1a2e;
+  border-radius: 999px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  transition:
+    left   0.38s cubic-bezier(0.34, 1.46, 0.64, 1),
+    width  0.38s cubic-bezier(0.34, 1.46, 0.64, 1),
+    top    0.38s cubic-bezier(0.34, 1.46, 0.64, 1),
+    height 0.38s cubic-bezier(0.34, 1.46, 0.64, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pill-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.25s ease;
+  color: #737786;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1;
+}
+.pill-nav-item:hover {
+  color: #1a1a2e;
+}
+.pill-nav-item.pill-active {
+  color: #ffffff;
+}
+.pill-nav-item span.pill-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+.pill-nav-item .material-symbols-outlined {
+  font-size: 18px;
+}
+
+/* =============================================
+   Layout — Subtle Grid Pattern Background
+   ============================================= */
+.grid-lines {
+  background-size: 36px 36px;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(0, 82, 201, 0.08) 1px, transparent 0),
+    linear-gradient(to right, rgba(194, 198, 215, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(194, 198, 215, 0.18) 1px, transparent 1px);
+}
+
+/* =============================================
+   Animations — Ambient Floating Orbs
+   ============================================= */
+@keyframes floatOrb1 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50%       { transform: translate(25px, -20px) scale(1.06); }
+}
+@keyframes floatOrb2 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50%       { transform: translate(-30px, 15px) scale(0.96); }
+}
+@keyframes floatOrb3 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  50%       { transform: translate(18px, 22px) scale(1.04); }
+}
+.animate-orb-1 { animation: floatOrb1 16s ease-in-out infinite; }
+.animate-orb-2 { animation: floatOrb2 21s ease-in-out infinite; }
+.animate-orb-3 { animation: floatOrb3 18s ease-in-out infinite; }
+
+/* =============================================
+   Animations — Shimmer Effect
+   ============================================= */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+.shimmer-badge {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-badge::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  animation: shimmer 3.5s infinite;
+}
+
+/* =============================================
+   Glassmorphism — Core Tokens
+   ============================================= */
+.glass-card {
+  background: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+  box-shadow:
+    0 8px 32px rgba(0, 82, 201, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03) !important;
+  transition:
+    transform    0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow   0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.60) !important;
+  box-shadow:
+    0 20px 52px rgba(0, 82, 201, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03) !important;
+  transform: translateY(-5px) !important;
+}
+
+.glass-card-subtle {
+  background: rgba(255, 255, 255, 0.32) !important;
+  backdrop-filter: blur(18px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.60) !important;
+  box-shadow:
+    0 4px 16px rgba(0, 82, 201, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.58) !important;
+  backdrop-filter: blur(16px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 2px 10px rgba(0, 82, 201, 0.07) !important;
+}
+
+.glass-header {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 2px 24px -4px rgba(0, 82, 201, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* =============================================
+   Buttons — Micro-Interactions
+   ============================================= */
+.glass-button-primary {
+  background: linear-gradient(135deg, #0052c9 0%, #256bee 100%);
+  box-shadow: 0 4px 18px 0 rgba(0, 82, 201, 0.32), inset 0 1px 1px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-button-primary:hover {
+  box-shadow: 0 8px 26px 0 rgba(0, 82, 201, 0.42), inset 0 1px 1px 0 rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px);
+}
+.glass-button-primary:active {
+  transform: translateY(0px) scale(0.99);
+}
+
+.glass-button-secondary {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px rgba(31, 38, 135, 0.05), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-button-secondary:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(0, 82, 201, 0.35);
+  color: #0052c9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 82, 201, 0.1);
+}
+.glass-button-secondary:active {
+  transform: translateY(0px);
+}
+
+/* =============================================
+   Components — Pipeline Node
+   ============================================= */
+.pipeline-node {
+  transition: all 0.25s ease;
+}
+.pipeline-node:hover {
+  transform: translateY(-3px) scale(1.03);
+  border-color: #0052c9;
+  box-shadow: 0 8px 24px -2px rgba(0, 82, 201, 0.15);
+}
+
+/* =============================================
+   Components — Telemetry Bar Chart
+   ============================================= */
+.telemetry-bar {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.telemetry-bar:hover {
+  filter: brightness(1.1);
+  transform: scaleY(1.05);
+}
